@@ -15,6 +15,7 @@ class KNN:
         
         if self.k > self.X.shape[0]:
             raise Exception("Your nearest neighbour count is more than your input. Try add more data or decrease the number of neighbours")
+
         self.X = X
         self.y = y
 
