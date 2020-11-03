@@ -12,7 +12,9 @@ class KNN:
     def fit(self, X, y):
         if len(X.shape) != 2 or len(y.shape) != 2:
             raise Exception("Input Shape must be 2D, your input shape is {}, try array.reshape(-1, 1)".format(X.shape))
-
+        
+        if self.k > self.X.shape[0]:
+            raise Exception("Your nearest neighbour count is more than your input. Try add more data or decrease the number of neighbours")
         self.X = X
         self.y = y
 
