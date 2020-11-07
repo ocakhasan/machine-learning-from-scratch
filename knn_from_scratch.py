@@ -56,14 +56,12 @@ class KNN:
             elif self.distance_metric == "manhattan":
                 distances = np.sum(np.abs(self.X - point), axis=1)
 
-            indices = np.argsort(distances)[:self.k]                    #get the indices of the closest points to given input
-            near_labels = self.y[indices]                               #get the labels of closest points to given input
-            counters =  np.unique(near_labels, return_counts=True)      #get the counts of every labels 
-            labels = counters[0]
-            values = counters[1] 
-            max_ind_label = np.argmax(values)                           #get the index of label which has more closest points
+            indices = np.argsort(distances)[:self.k]                        #get the indices of the closest points to given input
+            near_labels = self.y[indices]                                   #get the labels of closest points to given input
+            labels, values =  np.unique(near_labels, return_counts=True)      #get the counts of every labels 
+            max_ind_label = np.argmax(values)                               #get the index of label which has more closest points
             prediction = labels[max_ind_label]    
-            predictions.append(prediction)                              #return the label 
+            predictions.append(prediction)                                  #return the label 
 
         return predictions 
 
