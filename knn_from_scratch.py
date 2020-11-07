@@ -61,9 +61,9 @@ class KNN:
             counters =  np.unique(near_labels, return_counts=True)      #get the counts of every labels 
             labels = counters[0]
             values = counters[1] 
-            max_ind_label = np.argsort(values)[-1]                      #get the index of label which has more closest points
+            max_ind_label = np.argmax(values)                           #get the index of label which has more closest points
             prediction = labels[max_ind_label]    
-            predictions.append(prediction)                      #return the label 
+            predictions.append(prediction)                              #return the label 
 
         return predictions 
 
@@ -71,7 +71,7 @@ class KNN:
         
 
 if __name__ == "__main__":
-    model = KNN(3, "eucledian")
+    model = KNN(10, "eucledian")
     data = load_iris()
     X = data.data
     y = data.target.reshape(-1, 1) 
